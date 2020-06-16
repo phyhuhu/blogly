@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="list-group">
+    <li class="h1 list-group-item active">Users:</li>
+    {% for name in names %}
+        <li class="h3 list-group-item"> <a href="/users/{{ name.id }}">{{name.full_name}}</a></li>
+    {% endfor %}
+</ul>
+
+<h1>Create a User</h1>
+<form method="POST">
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">First Name</span>
+        </div>
+        <input name="add" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder='Enter a first name'>
+    </div>
+
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Last Name</span>
+        </div>
+        <input name="add" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder='Enter a last name'>
+    </div>
+
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Image URL</span>
+        </div>
+        <input name="add" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder='Provide an image of this user'>
+    </div>
+
+    <div class="form-group row center">
+        <div class="col-sm-10">
+            <a href="/users" class="btn btn-outline-primary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

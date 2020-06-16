@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add Post for {{user.full_name}}</h1>
+<form method="POST">
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Title</span>
+        </div>
+        <input name="add_post" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+    </div>
+
+    <div class="input-group-lg">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Content</span>
+        </div>
+        <textarea name="add_post" class="form-control" aria-label="With textarea"></textarea>
+    </div>
+
+    {% for tag in tags %}
+    <div class="form-check">
+            <input name="add_post" class="form-check-input" type="checkbox" value="{{ tag.id }}" id="defaultCheck1">
+            <label class="h3 form-check-label" for="defaultCheck1">{{ tag.tag }}</label>
+    </div>
+    {% endfor %}
+    
+    <div class="form-group row center">
+        <div class="col-sm-10">
+            <a href="/users/{{ user.id }}" class="btn btn-outline-primary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>
+
+<script src="http://unpkg.com/jquery"></script>
+<!-- <script src="/static/my_js.js"></script> -->
+
+{% endblock %}

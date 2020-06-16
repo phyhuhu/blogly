@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="list-group">
+    <li class="h1 list-group-item active">{{tag.tag}}</li>
+    {% for post in tag.posts %}
+        <li class="h3 list-group-item"> <a href="/posts/{{ post.id }}">{{post.title}}</a></li>
+    {% endfor %}
+</ul>
+
+<div>
+    <form>
+        <div class="form-group row center">
+            <div class="col-sm-10">
+                <a href="/tags" class="btn btn-outline-primary">Back To Tags Page</a>
+                <button type="submit" class="btn btn-primary" formaction="/tags/{{ tag.id }}/edit" formmethod="GET">Edit</button>
+                <button type="submit" class="btn btn-danger" formaction="/tags/{{ tag.id }}/delete" formmethod="GET">Delete</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="list-group">
+    <li class="h1 list-group-item active">Tags:</li>
+    {% for tag in tags %}
+        <li class="h3 list-group-item"> <a href="/tags/{{ tag.id }}">{{tag.tag}}</a></li>
+    {% endfor %}
+</ul>
+
+<div>
+    <form>
+        <div class="form-group row center">
+            <div class="col-sm-10">
+                <a href="/" class="btn btn-outline-primary">Back To Homepage</a>
+                <button name='createtag' type="submit" class="btn btn-primary" formaction="/tags/create" formmethod="GET">Create Tag</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

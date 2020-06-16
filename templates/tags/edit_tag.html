@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul class="list-group">
+    <li class="h1 list-group-item active">{{tag.tag}}</li>
+    {% for post in tag.posts %}
+        <li class="h3 list-group-item"> <a href="/posts/{{ post.id }}">{{post.title}}</a></li>
+    {% endfor %}
+</ul>
+
+<div>
+    <h1>Edit a Tag</h1>
+    <form method="POST">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
+            </div>
+            <input name="edit_tag" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="{{ tag.tag }}">
+        </div>
+
+        {% for post in posts %}
+        <div class="form-check">
+            <input name="edit_tag" class="form-check-input" type="checkbox" {% if post in tag.posts %}checked{% endif %} value="{{ post.id }}" id="defaultCheck1">
+            <label class="h3 form-check-label" for="defaultCheck1">{{ post.title }}</label>
+        </div>
+        {% endfor %}
+    
+        <div class="form-group row center">
+            <div class="col-sm-10">
+                <a href="/tags/{{ tag.id }}" class="btn btn-outline-primary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="http://unpkg.com/jquery"></script>
+<!-- <script src="/static/my_js.js"></script> -->
+
+{% endblock %}
